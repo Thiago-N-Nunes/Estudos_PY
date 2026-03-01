@@ -13,20 +13,31 @@ def finalizar_app():
     os.system('cls')
     print('Finalizou app\n')
 
-def ecolher_opcao():
-    escolha_do_user = int(input('Escolha uma opção: '))
-
-    match escolha_do_user:
-        case 1:
-            print('Cadastrar restaurante')
-        case 2:
-            print('Listar restaurante')
-        case 3:
-            print('Ativar restaurante')
-        case 4:
-            finalizar_app()
+def opcao_invalida():
+    print("Opção Invalida")
+    input('Digite uma tecla pra voltar pro menu principal')
+    main()
     
+
+def ecolher_opcao():
+    try:
+        escolha_do_user = int(input('Escolha uma opção: '))
+
+        match escolha_do_user: 
+            case 1:
+                print('Cadastrar restaurante')
+            case 2:
+                print('Listar restaurante')
+            case 3:
+                print('Ativar restaurante')
+            case 4:
+                finalizar_app()
+            case _:
+                opcao_invalida()    
+    except:
+        opcao_invalida()    
 def main():
+    os.system('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
     ecolher_opcao()
