@@ -1,6 +1,6 @@
 import os
 
-restaurantes = [{'nome' : 'Pizzaria Estrela'}, {'categoria' : 'Italiano'}, {'inaugurado' : False}, {'nome' : 'Gojou Restaurante'}, {'categoria' : 'Japonesa'}, {'inaugurado' : True}]
+restaurantes = [{'nome' : 'Pizzaria Estrela','categoria' : 'Italiano', 'inaugurado' : False}, {'nome' : 'Gojou Restaurante','categoria' : 'Japonesa','inaugurado' : True}]
 
 def exibir_nome_do_programa():
     print("""🅂🄰🄱🄾🅁 🄴🅇🄿🅁🄴🅂🅂""")
@@ -37,9 +37,10 @@ def cadastrar_novo_restaurante():
 
 def listar_restaurantes():
     exibir_subtitulo('LISTANDO RESTAURANTES')
-    nome_restaurante = restaurante['nome']
     for restaurante in restaurantes:
-        print(f' - {restaurante}')
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        print(f' - {nome_restaurante} | {categoria}')
         
     
     voltar_menu()
