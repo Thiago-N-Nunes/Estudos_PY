@@ -1,5 +1,6 @@
 import os
-restaurantes = ['Sushi', 'Pizza']
+
+restaurantes = [{'nome' : 'Pizzaria Estrela'}, {'categoria' : 'Italiano'}, {'inaugurado' : False}, {'nome' : 'Gojou Restaurante'}, {'categoria' : 'Japonesa'}, {'inaugurado' : True}]
 
 def exibir_nome_do_programa():
     print("""🅂🄰🄱🄾🅁 🄴🅇🄿🅁🄴🅂🅂""")
@@ -10,7 +11,7 @@ def exibir_opcoes():
     print('3. Ativar restaurante')
     print('4. Sair\n')
 
-def finalizar_app():
+def finalizar_app(): 
     exibir_subtitulo('APP FINALIZADO')
     voltar_menu()
 
@@ -36,9 +37,9 @@ def cadastrar_novo_restaurante():
 
 def listar_restaurantes():
     exibir_subtitulo('LISTANDO RESTAURANTES')
-    
+    nome_restaurante = restaurante['nome']
     for restaurante in restaurantes:
-        print(f'.{restaurante}')
+        print(f' - {restaurante}')
         
     
     voltar_menu()
@@ -55,9 +56,7 @@ def ecolher_opcao():
             case 3:
                 print('Ativar restaurante')
             case 4:
-                finalizar_app()
-            case _:
-                opcao_invalida()    
+                finalizar_app()   
     except:
         opcao_invalida()    
 def main():
