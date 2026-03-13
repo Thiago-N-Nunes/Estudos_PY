@@ -1,8 +1,8 @@
 import os
 
 restaurantes = [{'nome' : 'Pizzaria Estrela','categoria' : 'Italiano', 
-                 'inaugurado' : False}, 
-                {'nome' : 'Gojou Restaurante','categoria' : 'Japonesa','inaugurado' : True}]
+                 'ativo' : False}, 
+                {'nome' : 'Gojou Restaurante','categoria' : 'Japonesa','ativo' : True}]
 
 def exibir_nome_do_programa():
     print("""🅂🄰🄱🄾🅁 🄴🅇🄿🅁🄴🅂🅂""")
@@ -27,7 +27,10 @@ def opcao_invalida():
 
 def exibir_subtitulo(texto):
     os.system('cls')
+    linha = '*' * (len(texto))#Mostra o caractere escolhido em aspas multiplicado pela quantidade de letras no texto e soma mais 4 caracteres além da quantidade escrita(Efeito Decorativo) 
+    print(linha)
     print (texto)
+    print(linha)
     print()
     
 def cadastrar_novo_restaurante():
@@ -41,11 +44,12 @@ def cadastrar_novo_restaurante():
 
 def listar_restaurantes():
     exibir_subtitulo('LISTANDO RESTAURANTES')
+    print(f'{'NOME DO RESTAURANTE'.ljust(22)} | {'CATEGORIA'.ljust(22)} | STATUS')
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        status = restaurante['inaugurado']
-        print(f' - {nome_restaurante} | {categoria} | {status}')
+        status = 'inaugurado' if restaurante['ativo'] else 'Falta inaugurar'
+        print(f' - {nome_restaurante.ljust(22)} | {categoria.ljust(22)} | {status}') #.ljust() = Formatador
         
     
     voltar_menu()
@@ -57,8 +61,8 @@ def ativar_restaurante():
     for restaurante in restaurantes:
         if nome_restaurante == restaurante['nome']:
             restaurante_encontrado = True
-            restaurante['inaugurado'] = not restaurante['inaugurado']
-            mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso' if restaurante['inaugurado'] else f'O restaurante {nome_restaurante} foi desativado com sucesso'
+            restaurante['ativo'] = not restaurante['ativo']
+            mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso'
             print(mensagem)
     if not restaurante_encontrado:
         print(f'Restaurante {nome_restaurante} não encontrado')
